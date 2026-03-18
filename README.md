@@ -9,8 +9,7 @@ Built using **HTML, CSS, and JavaScript**, this website is more than just code �
 
 ## 🔗 Live Demo
 
-👉 [View Website](#)
-*(I will update this link after deployment)*
+👉 glow-theory.netlify.app
 
 ---
 
