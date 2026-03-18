@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Theory - Gallery</title>
+    <style>
+        /* General body styling */
+        body {
+            background-image: url('bg3.jpg'); 
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Gallery section styling */
+        .gallery {
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .image-grid div {
+            text-align: center;
+        }
+
+        .image-grid img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover; 
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #ffcc00;
+        }
+
+        /* Lightbox styling */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .lightbox-modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Glow Theory Gallery</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery">
+            <h2>Explore Our Products </h2>
+            <div class="image-grid">
+                <div>
+                    <img src="slider1.jpg" alt="Product 1" onclick="openLightbox(this)">
+                    <div class="image-caption">Glow Serum</div>
+                </div>
+                <div>
+                    <img src="slider2.jpg" alt="Product 2" onclick="openLightbox(this)">
+                    <div class="image-caption">Radiance Cream</div>
+                </div>
+                <div>
+                    <img src="slider3.jpg" alt="Product 3" onclick="openLightbox(this)">
+                    <div class="image-caption">Hydrating Mist</div>
+                </div>
+                <div>
+                    <img src="slider4.jpg" alt="Product 4" onclick="openLightbox(this)">
+                    <div class="image-caption">Nourishing Mask</div>
+                </div>
+                <div>
+                    <img src="img1.jpg" alt="Product 5" onclick="openLightbox(this)">
+                    <div class="image-caption">Rejuvenating Oil</div>
+                </div>
+                <div>
+                    <img src="img2.jpg" alt="Product 6" onclick="openLightbox(this)">
+                    <div class="image-caption">Gentle Cleanser</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Glow Theory. All rights reserved.</p>
+        <a href="#top">Back to Top</a>
+    </footer>
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightbox.style.display = 'flex';
+            lightboxImg.src = img.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

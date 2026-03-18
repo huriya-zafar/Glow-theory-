@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Theory - Contact Us</title>
+    <style>
+    
+        body {
+            background-image: url('bgi.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Map styling */
+        #map {
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form validation error styles */
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Glow Theory</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <div id="name-error" class="error"></div>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <div id="email-error" class="error"></div>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+                <div id="subject-error" class="error"></div>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <div id="message-error" class="error"></div>
+
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div id="map">
+                <h3>Our Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153163!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f0f0f0f%3A0x0!2sGlow%20Theory!5e0!3m2!1sen!2sau!4v1631234567890!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Glow Theory. All rights reserved.</p>
+        <a href="#top">Back to Top</a>
+    </footer>
+
+    <script>
+        // Form validation
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            // Reset error messages
+            document.getElementById('name-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('subject-error').textContent = '';
+            document.getElementById('message-error').textContent = '';
+
+            let valid = true;
+
+            // Validate name
+            const name = document.getElementById('name').value;
+            if (name === '') {
+                document.getElementById('name-error').textContent = 'Name is required.';
+                valid = false;
+            }
+
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email.match(emailRegex)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+                valid = false;
+            }
+
+            // Validate subject
+            const subject = document.getElementById('subject').value;
+            if (subject === '') {
+                document.getElementById('subject-error').textContent = 'Subject is required.';
+                valid = false;
+            }
+
+            // Validate message
+            const message = document.getElementById('message').value;
+            if (message === '') {
+                document.getElementById('message-error').textContent = 'Message is required.';
+                valid = false;
+            }
+
+            if (valid) {
+                alert('Form submitted successfully!');
+                document.getElementById('contact-form').reset();
+            }
+        });
+    </script>
+
+</body>
+</html>

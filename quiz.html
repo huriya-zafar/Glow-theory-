@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Theory - Skincare Quiz</title>
+    <style>
+        /* General body styling */
+        body {
+            background-image: url('bgi2.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: white;
+        }
+
+        /* Header styling */
+        header {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main content styling */
+        main {
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        select, textarea {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 60%;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Glow Theory</h1>
+    
+    </header>
+
+    <main>
+        <section>
+            <h2>Find Your Perfect Skincare Routine</h2>
+            <p style="text-align: center; font-size: 1.2em;">Take our quiz to discover the best skincare products based on your skin type and concerns.</p>
+            
+            <form id="quiz-form">
+                <label for="skin-type">Select Your Skin Type</label>
+                <select id="skin-type" name="skin-type" required>
+                    <option value="oily">Oily</option>
+                    <option value="dry">Dry</option>
+                    <option value="combination">Combination</option>
+                    <option value="sensitive">Sensitive</option>
+                </select>
+
+                <label for="concerns">What are your main skincare concerns?</label>
+                <textarea id="concerns" name="concerns" placeholder="E.g., acne, dryness, aging..." required></textarea>
+
+                <button type="submit">Get My Recommendations</button>
+            </form>
+
+            <div id="recommendations"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Glow Theory. All rights reserved.</p>
+        <a href="#top">Back to Top</a>
+    </footer>
+
+    <script>
+        // JavaScript for form submission and validation
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            let skinType = document.getElementById('skin-type').value;
+            let concerns = document.getElementById('concerns').value;
+
+            if (skinType && concerns) {
+                let recommendations = '';
+
+                // Simple recommendation logic based on skin type
+                if (skinType === 'oily') {
+                    recommendations = 'For oily skin, try oil-free moisturizers and mattifying products.';
+                } else if (skinType === 'dry') {
+                    recommendations = 'For dry skin, use hydrating products and rich moisturizers.';
+                } else if (skinType === 'combination') {
+                    recommendations = 'For combination skin, balance your routine with both hydrating and mattifying products.';
+                } else if (skinType === 'sensitive') {
+                    recommendations = 'For sensitive skin, choose gentle, fragrance-free products.';
+                }
+
+                // Display the recommendations
+                document.getElementById('recommendations').innerHTML = `<h3>Your Skincare Recommendations:</h3><p>${recommendations}</p><p><strong>Concerns:</strong> ${concerns}</p>`;
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
